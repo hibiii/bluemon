@@ -8,10 +8,12 @@ Licensed under MIT.
 
 ## Usage
 
+Please check out the source code for more information at this moment.
+I will not update this section until the user-facing interface is stable.
+
 ```console
 $ go build
-$ bluemoon GjvWb8WQ
+$ bluemon
 ```
-Example version ID is Quilt Standard Libraries `7.4.0+0.90.0-1.20.1`.
 
 TODO: write a better readme.
