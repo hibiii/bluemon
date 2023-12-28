@@ -42,8 +42,8 @@ func (mc *ModrinthClient) makeRequest(url string) ([]byte, error) {
 
 const version_route = "https://api.modrinth.com/v2/version/"
 
-func (mc *ModrinthClient) GetVersionDownloads(version string) (int, error) {
-	body, err := mc.makeRequest(version_route + version)
+func (mc *ModrinthClient) GetDownloadsForId(versionId string) (int, error) {
+	body, err := mc.makeRequest(version_route + versionId)
 	if err != nil {
 		return 0, err
 	}
@@ -60,4 +60,13 @@ func (mc *ModrinthClient) GetVersionDownloads(version string) (int, error) {
 	downloads := int(downloads_field.(float64))
 
 	return downloads, nil
+}
+
+func (mc *ModrinthClient) GetDownloadsForVersion(version *Version) error {
+	dl, err := mc.GetDownloadsForId(version.ModrinthId)
+	if err != nil {
+		return err
+	}
+	version.Downloads = dl
+	return nil
 }
