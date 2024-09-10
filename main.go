@@ -5,6 +5,19 @@ import (
 )
 
 func main() {
+	records, err := BookkeepingLoadRecords()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(records)
+	err = BookkeepingSaveRecords(records)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	return
+
 	config, err := ConfigReadFromFile("config.json")
 	if err != nil {
 		fmt.Printf("Error: could not read file: %s\n", err)
